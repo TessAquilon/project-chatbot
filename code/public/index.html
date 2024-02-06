@@ -4,7 +4,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="/code/css/style.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
       rel="stylesheet" />
@@ -14,21 +14,34 @@
     <link rel="manifest" href="/site.webmanifest">
     <title>Customer Care Chat</title>
   </head>
-
   <body>
     <section>
-      <header>
-        <section id="hero">
-          <h1>Customer Care Service</h1>
-          <p>For our clients</p>
+      <nav>
+        <section id="navigation">
+          <ul>
+            <li>Logo</li>
+            <li><a href="index.html#">Go back</a></li>
+            <li><h1>Chat with our Support Team</h1></li>
+          </ul>
         </section>
-      </header>
+      </nav>
       <main>
+        <section id="help-section">
+          <h2>How can we help you?</h2>
+          <div class="text">
+            <p>
+              <img src="/code/assets/logo2.png" alt="Logo" />
+              We are available 24/7 to help clarify any confusions you might have about our products and to ensure that you have a seamless experience from purchase to delivery.</p>
+            <a href="mailto:info@customerchatbot.com">Email</a>
+            <p>Send us an email</p>
+            <p>info@customerchatbot.com</p>
+          </div>
+        </section>
         <section class="chat" id="chat"></section>
         <div class="input-wrapper" id="input-wrapper">
           <form id="form">
-            <button id="action-btn" type="button">Greet</button>
-            <button id="alt-action-btn" type="button" hidden>Give belly rubs</button>
+            <button id="action-btn" type="button">Contact Chatbot</button>
+            <input type="text" id="input-field" />
           </form>
         </div>
       </main>
@@ -36,6 +49,6 @@
         <p small>&copy; Nino Aquilon 2023</p>
       </footer>
     </section>
-    <script src="./script.js"></script>
+    <script src="/code/script.js"></script>
   </body>
 </html>

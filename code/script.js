@@ -1,12 +1,7 @@
 // Variables that point to selected DOM elements
 const chat = document.getElementById('chat');
 const actionBtn = document.getElementById("action-btn");
-const altActionBtn = document.getElementById("alt-action-btn");
-const meowlong = document.getElementById("meowlong");
-const meowshort = document.getElementById("meowshort");
-const purrlong = document.getElementById("purrlong");
-const purrbreath = document.getElementById("purrbreath");
-const camerashutter = document.getElementById("camerashutter");
+const clientInput = document.getElementById("input-field")
 
 // Pause the audio elements initially
 meowlong.pause();
