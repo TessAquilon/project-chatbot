@@ -29,7 +29,7 @@
             <li><h1>Chat with our Support Team</h1></li>
           </ul>
       </nav>
-      <main>
+      
         <article id="help-section">
           <h2>How can we help you?</h2>
           <div class="text">
@@ -56,20 +56,25 @@
                </a>
         </article>
 
+      <main>
         <section class="chat" id="chat"></section>
         <div class="input-wrapper" id="input-wrapper">
           <form id="form">
+            <label for="text-input">
+              <input type="text" id="text-input" />
+            </label>
             <button id="action-btn" type="button">Contact Chatbot</button>
-            <input type="text" id="input-field" />
           </form>
         </div>
       </main>
+
       <footer>
         <ul>
           <li><img src="/code/assets/logo.png" alt="Logo" /></li>
         </ul>
         <p small>&copy; Nino Aquilon 2023</p>
       </footer>
+
     <script src="/code/script.js"></script>
   </body>
 </html>
