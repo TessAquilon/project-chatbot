@@ -1,49 +1,25 @@
 // Variables that point to selected DOM elements
 const chat = document.getElementById('chat');
 const actionBtn = document.getElementById("action-btn");
-const clientInput = document.getElementById("input-field")
+const textInput = document.getElementById("text-input")
 
-// Pause the audio elements initially
-meowlong.pause();
-meowshort.pause();
-purrlong.pause();
-purrbreath.pause();
 
 // Declare your functions after this comment
 
 // This function will add a chat bubble in the correct place based on who the sender is
-const showMessage = (message, sender, displayRandomImage) => {
+const showMessage = (message, sender) => {
   // the if statement checks if the sender is 'user' and if that's the case it inserts an html senction inside the chat with the posted message
   if (sender === 'user') {
-    if (displayRandomImage) {
-      const randomImageUrl = getRandomImageUrl();
-      chat.innerHTML += `
-        <section class="user-msg">
-          <div class="bubble user-bubble">
-            <img
-              src="${randomImageUrl}"
-              class="catpic"
-              alt="Cat" />
-          </div>
-          <img src="assets/user.png" alt="User" class="avatar" />  
-        </section>
-      `;
-    } else {
-      console.log("User");
       chat.innerHTML += `
         <section class="user-msg">
           <div class="bubble user-bubble">
             <p>${message}</p>
           </div>
-          <img src="assets/user.png" alt="User" class="avatar" />  
         </section>
       `;
-    }
   } else if (sender === 'bot') {
-    console.log("Bot");
     chat.innerHTML += `
       <section class="bot-msg">
-        <img src="assets/cat.png" alt="Bot" class="avatar" />
         <div class="bubble bot-bubble">
           <p>${message}</p>
         </div>
@@ -56,12 +32,12 @@ const showMessage = (message, sender, displayRandomImage) => {
 }
 
 // Initialize state
-let currentState = "greetBob";
+let currentState = "greetClient";
 
 // Function to handle button click and state transitions
 const handleAction = () => {
-  if (currentState === "greetBob") {
-    greetBob();
+  if (currentState === "greetClient") {
+    greetClient();
     currentState = "petBob";
     // change button
     actionBtn.textContent = "Pet Bob";
@@ -93,137 +69,11 @@ const handleAction = () => {
 actionBtn.addEventListener("click", () => {
   lastClickedButton = "actionBtn";
   handleAction();});
-altActionBtn.addEventListener("click", () => {
-    lastClickedButton = "altActionBtn";
-    handleAction();});
 
-// Greet Bob
-const greetBob = () => {
+// Greet Client
+const greetClient = () => {
   // hide button
   actionBtn.setAttribute("hidden", true);
-  showMessage("👋", 'user');
-  // Play the sound after 2s delay
-  setTimeout(() => {
-    meowshort.play();
-    // After the sound has played, show the "Meow?" message
-    meowshort.addEventListener("play", () => {
-      showMessage("Meow?", 'bot');
-    });
-  }, 1500);
-  // Show button after 4s delay
-  setTimeout(() => {
-    actionBtn.removeAttribute('hidden');
-  }, 3500)
+  showMessage("Hi, I'm your customer support bot 👋 How may I help you today?", 'bot');
 }
 
-// Pet Bob
-const petBob = () => {
-  actionBtn.setAttribute("hidden", true);
-  showMessage("🫳", 'user');
-  setTimeout(() => {
-    purrlong.play();
-    purrlong.addEventListener("play", () => {
-    showMessage("<p style='font-style: italic;'>purrr...</p>", 'bot');
-    });
-  }, 2000)
-  setTimeout(() => {
-    actionBtn.removeAttribute('hidden'); // pet head
-    altActionBtn.removeAttribute('hidden'); // give belly rubs
-  }, 8000)
-}
-
-// Pet head
-const petHead = () => {
-  // hide buttons
-  actionBtn.setAttribute("hidden", true);
-  altActionBtn.setAttribute("hidden", true);
-  showMessage("🫳", 'user');
-  setTimeout(() => {
-    purrbreath.play();
-    purrbreath.addEventListener("play", () => {
-      showMessage("<p style='font-style: italic;'>purrpurr...</p>", 'bot');
-    });
-  }, 2000)
-  setTimeout(() => {
-    showMessage("What a cutie",'user');
-  }, 10000)
-  setTimeout(() => {
-    actionBtn.removeAttribute('hidden');
-    lastClickedButton = null;
-  }, 12000)
-  chat.scrollTop = chat.scrollHeight;
-}
-
-// Give belly rubs
-const bellyRubs = () => {
-  // hide buttons
-  actionBtn.setAttribute("hidden", true);
-  altActionBtn.setAttribute("hidden", true);
-  showMessage("🫳", 'user');
-  // Bite!
-  setTimeout(() => {
-    meowlong.play();
-    meowlong.addEventListener("play", () => {
-      showMessage("Meow!", 'bot');
-    });
-  }, 2000);
-  setTimeout(()=> {
-    showMessage("<p style='font-style: italic;'>bites hand</p", 'bot');
-  }, 6000)
-  setTimeout(()=> {
-    showMessage("Ow🩸", 'user');
-  }, 7000)
-  setTimeout(() => {
-    chat.scrollTop = chat.scrollHeight;
-    actionBtn.removeAttribute('hidden');
-    lastClickedButton = null;
-  }, 10000)
-}
-
-// picture array
-const imageUrls = [
-  "assets/catpics/cat1.png",
-  "assets/catpics/cat2.png",
-  "assets/catpics/cat3.png",
-  "assets/catpics/cat4.png",
-  "assets/catpics/cat5.png",
-  "assets/catpics/cat6.png",
-  "assets/catpics/cat7.png",
-  "assets/catpics/cat8.png",
-  "assets/catpics/cat9.png"
-]
-
-// get random picture
-const getRandomImageUrl = () => {
-  const randomIndex = Math.floor(Math.random() * imageUrls.length);
-  return imageUrls[randomIndex];
-};
-
-// Take pic
-const takePic = () => {
-  // hide button
-  actionBtn.setAttribute("hidden", true);
-  setTimeout(() => {
-    camerashutter.play();
-    camerashutter.addEventListener("play", () => {
-      showMessage("Tadaaa",'user', true);
-    });
-  }, 3000)
-  setTimeout(() => {
-    meowlong.play();
-    meowlong.addEventListener("play", () => {
-      showMessage("Meow!", 'bot');
-    });
-  }, 5000);
-  setTimeout(() => {
-    actionBtn.removeAttribute('hidden');
-    chat.scrollTop = chat.scrollHeight;
-  }, 7000);
-}
-
-// Try again
-const tryAgain = () => {
-  // reload window
-  window.location.reload();
-  lastClickedButton = null;
-}
