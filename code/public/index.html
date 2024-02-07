@@ -15,28 +15,47 @@
     <title>Customer Care Chat</title>
   </head>
   <body>
-    <section>
       <nav>
-        <section id="navigation">
           <ul>
-            <li>Logo</li>
-            <li><a href="index.html#">Go back</a></li>
+            <li><a href="index.html#">
+              <svg 
+                aria-hidden="true"
+                focusable="false"
+                xmlns="http://www.w3.org/2000/svg"
+                height="14"
+                width="14"
+                viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160zm352-160l-160 160c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L301.3 256 438.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0z" fill="currentColor" /></svg>
+              Go back</a></li>
             <li><h1>Chat with our Support Team</h1></li>
           </ul>
-        </section>
       </nav>
       <main>
-        <section id="help-section">
+        <article id="help-section">
           <h2>How can we help you?</h2>
           <div class="text">
             <p>
-              <img src="/code/assets/logo2.png" alt="Logo" />
-              We are available 24/7 to help clarify any confusions you might have about our products and to ensure that you have a seamless experience from purchase to delivery.</p>
-            <a href="mailto:info@customerchatbot.com">Email</a>
-            <p>Send us an email</p>
-            <p>info@customerchatbot.com</p>
+              <img src="/code/assets/logo2.png" alt="Logo" class="logo-img" />
+              We are available 24/7 to help clarify any confusions you might have and to ensure that you have a seamless experience, from purchase to delivery.</p>
           </div>
-        </section>
+        </article>
+
+        <article id="contact">
+              <h3>Send us an email</h3>
+              <p>info@customerchatbot.com</p>
+              <a href="mailto:info@customerchatbot.com"
+                aria-label="Icon-only Button">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    height="32"
+                    width="32"
+                    viewBox="0 0 512 512"
+                    aria-hidden="true"
+                    focusable="false">
+                    <path d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4L236.8 313.6c11.4 8.5 27 8.5 38.4 0L492.8 150.4c12.1-9.1 19.2-23.3 19.2-38.4c0-26.5-21.5-48-48-48H48zM0 176V384c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V176L294.4 339.2c-22.8 17.1-54 17.1-76.8 0L0 176z" fill="currentColor" />
+                  </svg>
+               </a>
+        </article>
+
         <section class="chat" id="chat"></section>
         <div class="input-wrapper" id="input-wrapper">
           <form id="form">
@@ -46,9 +65,11 @@
         </div>
       </main>
       <footer>
+        <ul>
+          <li><img src="/code/assets/logo.png" alt="Logo" /></li>
+        </ul>
         <p small>&copy; Nino Aquilon 2023</p>
       </footer>
-    </section>
     <script src="/code/script.js"></script>
   </body>
 </html>
