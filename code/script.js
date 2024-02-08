@@ -75,5 +75,7 @@ const greetClient = () => {
   // hide button
   actionBtn.setAttribute("hidden", true);
   showMessage("Hi, I'm your customer support bot 👋 How may I help you today?", 'bot');
+  // show list of options to user
+
 }
 
