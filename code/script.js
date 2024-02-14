@@ -62,8 +62,8 @@ const handleAction = () => {
   // Handle state transitions based on currentState and lastClickedButton
   if (currentState === "greetClient") {
     greetClient();
-    currentState = "chooseOption";
-  } else if (currentState === "chooseOption") {
+    currentState = "showOptions";
+  } else if (currentState === "showOptions") {
     switch (lastClickedButton) {
       case "order":
         orderOption();
@@ -84,15 +84,19 @@ const handleAction = () => {
         console.log('Unknown button');
         return;
     }
-    currentState = "botReply";
-  } else if (currentState === "botReply") {
+    currentState = "handleOptionChoice";
+  } else if (currentState === "handleOptionChoice") {
     if (lastClickedButton === "problem1") {
       problem1Option();
       currentState = "endOfConversation";
     } else {
       console.log('Unknown button');
     }
-  } else {
+  } else if (currentState === "endOfConversation") {
+    endOfConversation();
+    console.log('End of conversation');
+  }
+  else {
     console.log('Unknown currentState');
   }
 };
