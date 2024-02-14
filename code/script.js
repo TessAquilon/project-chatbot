@@ -16,15 +16,8 @@ const paymentOptions = document.getElementById("payment-options");
 const returnsOptions = document.getElementById("returns-options");
 const otherOptions = document.getElementById("other-options");
 
-
-const problem1 = document.getElementById("problem1");
-const problem2 = document.getElementById("problem2");
-const problem3 = document.getElementById("problem3");
-const problem4 = document.getElementById("problem4");
-const problem5 = document.getElementById("problem5");
-const problem6 = document.getElementById("problem6");
-const problem7 = document.getElementById("problem7");
-const problem8 = document.getElementById("problem8");
+const option1 = document.getElementById("option1");
+const option2 = document.getElementById("option2");
 
 
 // Declare your functions after this comment
@@ -86,8 +79,8 @@ const handleAction = () => {
     }
     currentState = "handleOptionChoice";
   } else if (currentState === "handleOptionChoice") {
-    if (lastClickedButton === "problem1") {
-      problem1Option();
+    if (lastClickedButton === "option1") {
+      option1Solution();
       currentState = "endOfConversation";
     } else {
       console.log('Unknown button');
@@ -112,14 +105,8 @@ const handleClick = (buttonName) => {
     case 'payment':
     case 'returns':
     case 'other':
-    case 'problem1':
-    case 'problem2':
-    case 'problem3':
-    case 'problem4':
-    case 'problem5':
-    case 'problem6':
-    case 'problem7':
-    case 'problem8':
+    case 'option1':
+    case 'option2':
       lastClickedButton = buttonName;
       handleAction();
       break;
@@ -135,7 +122,7 @@ delivery.addEventListener("click", () => handleClick('delivery'));
 payment.addEventListener("click", () => handleClick('payment'));
 other.addEventListener("click", () => handleClick('other'));
 
-problem1.addEventListener("click", () => handleClick('problem1'));
+option1.addEventListener("click", () => handleClick('option1'));
 
 
 // Greet Client
@@ -193,7 +180,7 @@ const otherOption = () => {
 }
 
 // Problem 1
-const problem1Option = () => {
+const option1Solution = () => {
   // hide options
   orderOptions.setAttribute("hidden", true);
   showMessage("I understand. You will get a refund for the product(s) that sold out. We will get in touch with you shortly.", 'bot');
@@ -201,5 +188,5 @@ const problem1Option = () => {
 
 // End of Conversation
 const endOfConversation = () => {
-  showMessage("If you have any more questions, please don't hesitate to reach out to our customer care team via email. Or for more pressing matters, please get in touch via our phone line, that is open 24/7. Thank you for chatting with me today!", 'bot');
+  showMessage("Thank you for getting in touch with me today! If you have any more questions, please don't hesitate to reach out to us via our phone line that is open 24/7, or via email info@customerchatbot.com ", 'bot');
 }
