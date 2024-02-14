@@ -59,39 +59,45 @@ let currentState = "greetClient";
 
 // Function to handle button click and state transitions
 const handleAction = () => {
+  // Handle state transitions based on currentState and lastClickedButton
   if (currentState === "greetClient") {
     greetClient();
     currentState = "chooseOption";
   } else if (currentState === "chooseOption") {
-    if (lastClickedButton === "order") {
-      orderOption();
-      currentState = "botReply";
-    } else if (lastClickedButton === "delivery") {
-      deliveryOption();
-      currentState = "botReply";
-    } else if (lastClickedButton === "payment") {
-      paymentOption();
-      currentState = "botReply";
-    } else if (lastClickedButton === "returns") {
-      returnsOption();
-      currentState = "botReply";
-    } else if (lastClickedButton === "other") {
-      otherOption();
-      currentState = "botReply";
-    } else {
-      console.log('Unknown button');
-    }}
-  else if (currentState === "botReply") {
+    switch (lastClickedButton) {
+      case "order":
+        orderOption();
+        break;
+      case "delivery":
+        deliveryOption();
+        break;
+      case "payment":
+        paymentOption();
+        break;
+      case "returns":
+        returnsOption();
+        break;
+      case "other":
+        otherOption();
+        break;
+      default:
+        console.log('Unknown button');
+        return;
+    }
+    currentState = "botReply";
+  } else if (currentState === "botReply") {
     if (lastClickedButton === "problem1") {
       problem1Option();
       currentState = "endOfConversation";
     } else {
       console.log('Unknown button');
     }
-  
-  
+  } else {
+    console.log('Unknown currentState');
   }
-}
+};
+
+
 // Attach event listener to the buttons (switch statement)
 
 const handleClick = (buttonName) => {
