@@ -18,6 +18,8 @@ const otherOptions = document.getElementById("other-options");
 
 const option1 = document.getElementById("option1");
 const option2 = document.getElementById("option2");
+const option3 = document.getElementById("option3");
+const option4 = document.getElementById("option4");
 
 
 // Declare your functions after this comment
@@ -48,51 +50,70 @@ const showMessage = (message, sender) => {
 }
 
 // Initialize state
-let currentState = "greetClient";
+let currentState = "greetAndShowOptions";
 
-// Function to handle button click and state transitions
 const handleAction = () => {
   // Handle state transitions based on currentState and lastClickedButton
-  if (currentState === "greetClient") {
+  if (currentState === "greetAndShowOptions") {
     greetClient();
-    currentState = "showOptions";
-  } else if (currentState === "showOptions") {
+    currentState = "showSubOptions";
+  } else if (currentState === "showSubOptions") {
     switch (lastClickedButton) {
       case "order":
-        orderOption();
+        showOrderOptions();
+        currentState = "handleSubOptionChoice";
         break;
       case "delivery":
-        deliveryOption();
+        showDeliveryOptions();
+        currentState = "handleSubOptionChoice";
         break;
       case "payment":
-        paymentOption();
+        showPaymentOptions();
+        currentState = "handleSubOptionChoice";
         break;
       case "returns":
-        returnsOption();
+        showReturnsOptions();
+        currentState = "handleSubOptionChoice";
         break;
       case "other":
-        otherOption();
+        showOtherOptions();
+        currentState = "handleSubOptionChoice";
         break;
       default:
         console.log('Unknown button');
         return;
     }
-    currentState = "handleOptionChoice";
-  } else if (currentState === "handleOptionChoice") {
-    if (lastClickedButton === "option1") {
-      option1Solution();
-      currentState = "endOfConversation";
-    } else {
-      console.log('Unknown button');
+  } else if (currentState === "handleSubOptionChoice") {
+    switch (lastClickedButton) {
+      case "option1":
+        option1Solution();
+        currentState = "endOfConversation";
+        console.log('Option 1 clicked. Current state:', currentState);
+        break;
+      case "option2":
+        option2Solution();
+        currentState = "endOfConversation";
+        break;
+      case "option3":
+        option3Solution();
+        currentState = "endOfConversation";
+        break;
+      case "option4":
+        option4Solution();
+        currentState = "endOfConversation";
+        break;
+      default:
+        console.log('Unknown button');
+        return;
     }
   } else if (currentState === "endOfConversation") {
-    endOfConversation();
+    endConversation();
     console.log('End of conversation');
-  }
-  else {
+  } else {
     console.log('Unknown currentState');
   }
 };
+
 
 
 // Attach event listener to the buttons (switch statement)
@@ -107,6 +128,8 @@ const handleClick = (buttonName) => {
     case 'other':
     case 'option1':
     case 'option2':
+    case 'option3':
+    case 'option4':
       lastClickedButton = buttonName;
       handleAction();
       break;
@@ -123,6 +146,9 @@ payment.addEventListener("click", () => handleClick('payment'));
 other.addEventListener("click", () => handleClick('other'));
 
 option1.addEventListener("click", () => handleClick('option1'));
+option2.addEventListener("click", () => handleClick('option2'));
+option3.addEventListener("click", () => handleClick('option3'));
+option4.addEventListener("click", () => handleClick('option4'));
 
 
 // Greet Client
@@ -135,7 +161,7 @@ const greetClient = () => {
 }
 
 // Order Option
-const orderOption = () => {
+const showOrderOptions = () => {
   // hide options
   options.setAttribute("hidden", true);
   showMessage("I understand. How can I help you with your order?", 'bot');
@@ -144,7 +170,7 @@ const orderOption = () => {
 }
 
 // Delivery Option
-const deliveryOption = () => {
+const showDeliveryOptions = () => {
   // hide options
   options.setAttribute("hidden", true);
   showMessage("I understand. How can I help you with your delivery?", 'bot');
@@ -153,7 +179,7 @@ const deliveryOption = () => {
 }
 
 // Payment Option
-const paymentOption = () => {
+const showPaymentOptions = () => {
   // hide options
   options.setAttribute("hidden", true);
   showMessage("I understand. How can I help you with your payment?", 'bot');
@@ -162,7 +188,7 @@ const paymentOption = () => {
 }
 
 // Returns Option
-const returnsOption = () => {
+const showReturnsOptions = () => {
   // hide options
   options.setAttribute("hidden", true);
   showMessage("I understand. How can I help you with your return?", 'bot');
@@ -171,7 +197,7 @@ const returnsOption = () => {
 }
 
 // Other Option
-const otherOption = () => {
+const showOtherOptions = () => {
   // hide options
   options.setAttribute("hidden", true);
   showMessage("I understand. How can I help you?", 'bot');
@@ -183,10 +209,11 @@ const otherOption = () => {
 const option1Solution = () => {
   // hide options
   orderOptions.setAttribute("hidden", true);
-  showMessage("I understand. You will get a refund for the product(s) that sold out. We will get in touch with you shortly.", 'bot');
+  showMessage("We are so sorry to hear that. You will get a refund for the product(s) that were sold out while your order was being processed. The refund will be transferred to your bank account within 2-3 working days.", 'bot');
 }
 
 // End of Conversation
-const endOfConversation = () => {
-  showMessage("Thank you for getting in touch with me today! If you have any more questions, please don't hesitate to reach out to us via our phone line that is open 24/7, or via email info@customerchatbot.com ", 'bot');
+const endConversation = () => {
+  console.log('End of conversation');
+  showMessage("Thank you so much for getting in touch! Please don't hesitate to reach out to us via our phone line that is open 24/7, or via email info@customerchatbot.com if you have any more questions. ", 'bot');
 }

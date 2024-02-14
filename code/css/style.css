@@ -90,7 +90,7 @@ main .chat {
   display: flex;
   justify-content: flex-start;
   overflow: scroll;
-  flex-flow: column wrap;
+  flex-flow: column nowrap;
 }
 
 .input-wrapper form {
