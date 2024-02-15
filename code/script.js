@@ -60,23 +60,23 @@ const handleAction = () => {
   } else if (currentState === "showSubOptions") {
     switch (lastClickedButton) {
       case "order":
-        showOrderOptions();
+        showOptions("order", orderOptions, "I need help with my order", "I understand. How can I help you with your order?");
         currentState = "handleSubOptionChoice";
         break;
       case "delivery":
-        showDeliveryOptions();
+        showOptions("delivery", deliveryOptions, "I need help with my delivery", "I understand. How can I help you with your delivery?");
         currentState = "handleSubOptionChoice";
         break;
       case "payment":
-        showPaymentOptions();
+        showOptions("payment", paymentOptions, "I need help with my payment", "I understand. How can I help you with your payment?");
         currentState = "handleSubOptionChoice";
         break;
       case "returns":
-        showReturnsOptions();
+        showOptions("returns", returnsOptions, "I need help with my return", "I understand. How can I help you with your return?");
         currentState = "handleSubOptionChoice";
         break;
       case "other":
-        showOtherOptions();
+        showOptions("other", otherOptions, "I need help with something else", "I understand. How can I help you?");
         currentState = "handleSubOptionChoice";
         break;
       default:
@@ -86,21 +86,28 @@ const handleAction = () => {
   } else if (currentState === "handleSubOptionChoice") {
     switch (lastClickedButton) {
       case "option1":
-        option1Solution();
-        currentState = "endOfConversation";
-        console.log('Option 1 clicked. Current state:', currentState);
+        showSolution("option1", orderOptions, "Products sold out while my order was processed", "We are so sorry to hear that. You will get a refund for the products that were sold out while your order was being processed.", true, false );
         break;
       case "option2":
-        option2Solution();
-        currentState = "endOfConversation";
+        showSolution("option2", orderOptions, "There was a problem processing my order", "We are so sorry to hear that there was an error while processing your order. We know how frustrating this can be. Please let me know your order number so we can check what happened with your order.", false, true)
         break;
       case "option3":
-        option3Solution();
-        currentState = "endOfConversation";
+      showSolution("option3", orderOptions, "I haven't received my order confirmation", "We are so sorry about that. Please check your spam folder, and if the problem persists, please contact us directly via our phone line or our email.", true, false )
         break;
       case "option4":
-        option4Solution();
-        currentState = "endOfConversation";
+        showSolution("option4", orderOptions, "Other", "We are so sorry to hear that there has been an issue with your order. Please contact us directly via our phone line or our email so we can help you with your issue.", true, false )
+        break;
+      case "option5":
+        showSolution("option5", deliveryOptions, "I want to change my delivery details", "I understand. Please enter your email so our customer care team can get in touch with you: ", false, true)
+        break;
+      case "option6":
+        showSolution("option6", deliveryOptions, "My delivery is delayed", "We are so sorry to hear that there has been a delay while delivering your product(s). We know how frustrating it can be to wait longer than expected for an order to arrive. Please enter your order number so we can check what happened to your delivery.", false, true)
+        break;
+      case "option7":
+        showSolution("option7", deliveryOptions, "I haven't received my delivery", "We are so sorry to hear that you haven't received your delivery. Please enter your order number so we can check what happened to your delivery.", false, true)
+        break;
+      case "option8":
+        showSolution("option8", deliveryOptions, "Other", "We are so sorry to hear that there has been an issue with your delivery. Please contact us directly via our phone line or our email so we can help you with your issue.", true, false )
         break;
       default:
         console.log('Unknown button');
@@ -156,64 +163,51 @@ const greetClient = () => {
   // hide button
   actionBtn.setAttribute("hidden", true);
   showMessage("Hi, I'm your customer support bot 👋 How may I help you today?", 'bot');
-  // show options
-  options.removeAttribute("hidden");
+  // show options after 1 second
+  setTimeout(() => {
+  options.removeAttribute("hidden")
+  }, 1000);
 }
 
-// Order Option
-const showOrderOptions = () => {
+// Show options
+
+const showOptions = (optionType, optionsElement, messageUser, messageBot) => {
   // hide options
   options.setAttribute("hidden", true);
-  showMessage("I understand. How can I help you with your order?", 'bot');
-  // show order options
-  orderOptions.removeAttribute("hidden");
+  // show chosen option as a message from the user in the chat
+  showMessage(messageUser, 'user');
+  showMessage(messageBot, 'bot');
+  // show corresponding options after a certain delay
+  setTimeout(() => {
+    optionsElement.removeAttribute("hidden");
+  }, 2000);
 }
 
-// Delivery Option
-const showDeliveryOptions = () => {
-  // hide options
-  options.setAttribute("hidden", true);
-  showMessage("I understand. How can I help you with your delivery?", 'bot');
-  // show order options
-  deliveryOptions.removeAttribute("hidden");
-}
 
-// Payment Option
-const showPaymentOptions = () => {
-  // hide options
-  options.setAttribute("hidden", true);
-  showMessage("I understand. How can I help you with your payment?", 'bot');
-  // show order options
-  paymentOptions.removeAttribute("hidden");
-}
+// Show solution
 
-// Returns Option
-const showReturnsOptions = () => {
+const showSolution = (optionType, optionsElement, messageUser, messageBot, endConversation, showTextInput) => {
   // hide options
-  options.setAttribute("hidden", true);
-  showMessage("I understand. How can I help you with your return?", 'bot');
-  // show order options
-  returnsOptions.removeAttribute("hidden");
-}
-
-// Other Option
-const showOtherOptions = () => {
-  // hide options
-  options.setAttribute("hidden", true);
-  showMessage("I understand. How can I help you?", 'bot');
-  // show order options
-  otherOptions.removeAttribute("hidden");
-}
-
-// Problem 1
-const option1Solution = () => {
-  // hide options
-  orderOptions.setAttribute("hidden", true);
-  showMessage("We are so sorry to hear that. You will get a refund for the product(s) that were sold out while your order was being processed. The refund will be transferred to your bank account within 2-3 working days.", 'bot');
+  optionsElement.setAttribute("hidden", true);
+  // show chosen option as a message from the user in the chat
+  showMessage(messageUser, 'user');
+  showMessage(messageBot, 'bot');
+  if (endConversation) {
+    setTimeout(() => {
+      endOfConversation();
+    }, 2000);
+  }
+  if (showTextInput) {
+    setTimeout(() => {
+      textInput.removeAttribute("hidden");
+    }, 2000);
+  }
 }
 
 // End of Conversation
-const endConversation = () => {
+const endOfConversation = () => {
   console.log('End of conversation');
   showMessage("Thank you so much for getting in touch! Please don't hesitate to reach out to us via our phone line that is open 24/7, or via email info@customerchatbot.com if you have any more questions. ", 'bot');
 }
+
+
