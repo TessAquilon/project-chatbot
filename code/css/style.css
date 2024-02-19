@@ -1,11 +1,12 @@
 :root {
-  --white: #FFECD1;
-  --orange: #FF7D00;
-  --sienna: #78290F;
-  --blue: #15616D;
+  --ltviolet: #DCC5EF;
+  --violet: #C792FC;
+  --dkviolet: #8F49F2;
   --black: #001524;
+  --white: #FFFBFF;
   --sans: 'Montserrat', sans-serif;
   --font-size: 1.3rem;
+  --border-radius: 0.5rem;
 }
 
 html {
@@ -29,8 +30,25 @@ padding: 0;
 border: 0;
 font-family: var(--sans);
 font-size: var(--font-size);
+color: var(--black);;
+background-image: url(/code/assets/bbblurry_background.svg);
+background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  height: 100vh;
+  width: 100vw;
 }
 
+a {
+  text-decoration: none;
+  color: var(--black);
+  &:visited {
+    color: var(--black);
+  }
+  &:active {
+    color: var(--black);
+  }
+}
 
 h1 {
   text-align: center;
@@ -62,7 +80,7 @@ p {
 
 input {
   border: none;
-  border-radius: 4px 0 0 4px;
+  border-radius: var(--border-radius);
   padding: 1em;
   font-size: var(--font-size);
   font-family: var(--sans);
@@ -73,24 +91,29 @@ input {
 }
 
 main {
+  display: flex;
+  flex-flow: column wrap;
+  gap: 3rem;
+  max-width: 800px;
+}
+
+#main-chat {
   margin: 0 auto;
   width: 100%;
-  max-width: 700px;
+  max-width: 800px;
   height: 600px;
-  border-radius: 30px;
+  border-radius: var(--border-radius);
   background-color: white;
   display: flex;
   flex-flow: column nowrap;
-
 }
 
-main .chat {
+#main-chat .chat {
   flex: 1;
   display: flex;
   justify-content: flex-start;
   overflow: scroll;
   flex-flow: column nowrap;
-  background: url(/code/assets/bbblurry_background.svg) no-repeat center center fixed;
 }
 
 .input-wrapper form {
@@ -133,12 +156,12 @@ main .chat {
 }
 
 .bot-bubble {
-  border-radius: 0px 26px 26px 26px;
+  border-radius: var(--border-radius);
   margin-left: 8px;
 }
 
 .user-bubble {
-  border-radius: 26px 0 26px 26px;
+  border-radius: var(--border-radius);
   margin-right: 8px;
 }
 
@@ -152,7 +175,7 @@ button {
   background-color: var(--blue);
   color: var(--white);
   border: none;
-  border-radius: 5px;
+  border-radius: var(--border-radius);
   padding: 16px 40px;
   margin-right: 4px;
   font-size: var(--font-size);
@@ -188,17 +211,25 @@ nav ul {
 nav li:first-child {
   flex-basis: 100%;
   text-align: left;
+  display: flex;
+  align-items: center;
 }
 
 nav ul li a {
   text-decoration: none;
   color: var(--white);
-  background-color: var(--blue);
+  &:visited {
+    color: var(--white);
+  };
+  &:active {
+    color: var(--white);
+  };
+  background-color: var(--violet);
   padding: 0.5em;
-  border-radius: 5px;
+  border-radius: var(--border-radius);
   transition: all 220ms ease-in-out 0s;
   &:hover {
-    background-color: var(--orange);
+    background-color: var(--ltviolet);
   }
 }
 
@@ -234,40 +265,42 @@ footer ul li img {
 #help-section {
   display: flex;
   flex-flow: column wrap;
-  padding: 0 2rem;
+  padding: 0 1rem;
   gap: 1rem;
+  text-align: center;
 }
 
 #help-section .text {
   display: block;
 }
 
-.logo-img {
-  max-height: 100px;
-  display: block;
-}
-
 /* contact section */
+
+#contact {
+  padding: 0 1rem;
+}
 
 #contact .text {
   display: flex;
   flex-flow: column wrap;
   align-items: center;
-  padding: 2rem 0;
+  padding: 1rem 0;
   gap: 1rem;
 }
 
 #contact .text a {
   display: flex;
   align-items: center;
-  color: var(--blue);
-  border-radius: 50%;
+  color: var(--white);
+  background-color: var(--ltviolet);
+  padding: 0.45em 0.6em;
+  border-radius: var(--border-radius);
   cursor: pointer;
   transition: all 220ms ease-in-out 0s;
   &:hover {
-    transform: scale(1.5);
+    transform: scale(1.1);
     border: none;
-    color: var(--orange);
+    background-color: var(--violet);
   };
   &:focus {
     outline-style: solid;
@@ -280,6 +313,20 @@ footer ul li img {
   font-weight: 500;
 }
 
+#contact .chat-btn {
+  color: var(--black);
+    background-color: var(--white);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1em;
+    border-radius: var(--border-radius);
+    border: 1px solid var(--violet);
+    margin-top: 1rem;
+    max-width: 600px;
+}
+
+
 /* media queries */
 
 @media screen and (min-width: 550px) {
@@ -287,11 +334,5 @@ footer ul li img {
   #help-section .text {
     display: flow-root;
     max-width: 900px;
-  }
-
-  .logo-img {
-    float: left;
-    shape-outside: polygon(51.74% 2px, 31.75% 104%, 19.35% 108%, -8px -1%);
-    max-height: 200px;
   }
 }

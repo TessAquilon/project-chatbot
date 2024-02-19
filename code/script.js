@@ -1,7 +1,6 @@
 // Variables that point to selected DOM elements
 const chat = document.getElementById('chat');
 const form = document.getElementById('form');
-const actionBtn = document.getElementById("action-btn");
 const textInput = document.getElementById("text-input");
 const sendBtn = document.getElementById("send-btn");
 
@@ -108,7 +107,6 @@ const handleClick = (buttonName) => {
 }
 
 // Attach event listeners to the buttons
-actionBtn.addEventListener("click", () => handleClick('actionBtn'));
 order.addEventListener("click", () => handleClick('order'));
 delivery.addEventListener("click", () => handleClick('delivery'));
 returns.addEventListener("click", () => handleClick('returns'));
@@ -140,16 +138,17 @@ option20.addEventListener("click", () => handleClick('option20'));
 
 // Greet Client
 const greetClient = () => {
-  // hide button
-  actionBtn.setAttribute("hidden", true);
-  // show chat
-  chat.removeAttribute("hidden");
   showMessage("Hi, I'm your customer support bot 👋 How may I help you today?", 'bot');
   // show options after 1 second
   setTimeout(() => {
   options.removeAttribute("hidden")
-  }, 1000);
+  }, 2000);
 }
+
+// Greet Client after 1 second
+setTimeout(() => {
+  greetClient();
+}, 1000);
 
 // Show options
 

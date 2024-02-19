@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/code/css/style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet" />
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/Favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/Favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/Favicons/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <title>Customer Care Chat</title>
+  </head>
+  <body>
+      <nav>
+          <ul>
+            <li><a href="index.html#">
+              <svg 
+                aria-hidden="true"
+                focusable="false"
+                xmlns="http://www.w3.org/2000/svg"
+                height="14"
+                width="14"
+                viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160zm352-160l-160 160c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L301.3 256 438.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0z" fill="currentColor" /></svg>
+              Go back</a></li>
+            <li><h1>Chat with our Support Bot</h1></li>
+          </ul>
+      </nav>
+
+      <main id="main-chat">
+        <section class="chat" id="chat"></section>
+        <div class="input-wrapper" id="input-wrapper">
+          <form id="form">
+            <label for="text-input">
+              <input type="text" id="text-input" minlength="1" maxlength="25" hidden />
+            </label>
+            <button id="send-btn" type="submit" hidden>Send</button>
+            <div id="options" hidden>
+              <button type="button" id="order">Order</button>
+              <button type="button" id="delivery">Delivery</button>
+              <button type="button" id="payment">Payment</button>
+              <button type="button" id="returns">Returns</button>
+              <button type="button" id="other">Other</button>
+            </div>
+            <div id="order-options" hidden>
+              <button type="button" id="option1">Product(s) sold out while my order was processed</button>
+              <button type="button" id="option2">There was a problem processing my order</button>
+              <button type="button" id="option3">I haven't received my order confirmation</button>
+              <button type="button" id="option4">Other</button>
+            </div>
+            <div id="delivery-options" hidden>
+              <button type="button" id="option5">I want to change my delivery details</button>
+              <button type="button" id="option6">My delivery is delayed</button>
+              <button type="button" id="option7">I haven't received my delivery</button>
+              <button type="button" id="option8">Other</button>
+            </div>
+            <div id="payment-options" hidden>
+              <button type="button" id="option9">My payment was declined while ordering</address></button>
+              <button type="button" id="option10">Products sold out after my payment was processed</button>
+              <button type="button" id="option11">I want to change my payment details</button>
+              <button type="button" id="option12">Other</button>
+            </div>
+            <div id="returns-options" hidden>
+              <button type="button" id="option13">I want to make a return</button>
+              <button type="button" id="option14">I want a refund</button>
+              <button type="button" id="option15">I haven't received my refund</button>
+              <button type="button" id="option16">Other</button>
+            </div>
+            <div id="other-options" hidden>
+              <button type="button" id="option17">I have a question about a product</address></button>
+              <button type="button" id="option18">I have a question about my account</button>
+              <button type="button" id="option19">I have a question about a promotion</button>
+              <button type="button" id="option20">Other</button>
+          </form>
+        </div>
+      </main>
+
+      <footer>
+        <p small>&copy; Nino Aquilon 2023</p>
+      </footer>
+
+    <script src="/code/script.js"></script>
+  </body>
+</html>
