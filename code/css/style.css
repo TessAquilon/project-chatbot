@@ -104,7 +104,6 @@ main {
   max-width: 800px;
   height: 600px;
   border-radius: var(--border-radius);
-  background-color: white;
   display: flex;
   flex-flow: column nowrap;
 }
@@ -136,6 +135,7 @@ main {
   display: flex;
   margin: 16px 8px 0 0;
   flex-shrink: 0;
+  
 }
 
 .user-msg {
@@ -151,19 +151,21 @@ main {
   font-size: var(--font-size);
   line-height: 26px;
   padding: 16px 24px;
-  color: var(--black);
   max-width: 40%;
-  border: 1px solid var(--blue);
 }
 
 .bot-bubble {
   border-radius: var(--border-radius);
   margin-left: 8px;
+  background-color: var(--white);
+  color: var(--black);
 }
 
 .user-bubble {
   border-radius: var(--border-radius);
   margin-right: 8px;
+  background-color: var(--violet);
+  color: var(--white);
 }
 
 .input-wrapper {
@@ -173,7 +175,7 @@ main {
 
 
 button {
-  background-color: var(--blue);
+  background-color: var(--violet);
   color: var(--white);
   border: none;
   border-radius: var(--border-radius);
@@ -187,8 +189,15 @@ button {
 }
 
 button:hover {
-  opacity: 0.9;
+  background-color: var(--ltviolet);
   transition: all 0.2s ease;
+}
+
+#options {
+  display: flex;
+    flex-flow: row wrap;
+    gap: 1rem;
+    justify-content: center;
 }
 
 /* nav section */

@@ -5,6 +5,7 @@ const textInput = document.getElementById("text-input");
 const sendBtn = document.getElementById("send-btn");
 
 const options = document.getElementById("options");
+
 const order = document.getElementById("order");
 const delivery = document.getElementById("delivery");
 const payment = document.getElementById("payment");
@@ -65,14 +66,13 @@ const showMessage = (message, sender) => {
 }
 
 // Initialize state
-let currentState = "greetAndShowOptions";
+let currentState = "initialState";
 let lastClickedButton = '';
 
 // Attach event listener to the buttons (switch statement)
 
 const handleClick = (buttonName) => {
   switch(buttonName) {
-    case 'actionBtn':
     case 'order':
     case 'delivery':
     case 'payment':
@@ -138,17 +138,13 @@ option20.addEventListener("click", () => handleClick('option20'));
 
 // Greet Client
 const greetClient = () => {
-  showMessage("Hi, I'm your customer support bot 👋 How may I help you today?", 'bot');
-  // show options after 1 second
+    showMessage("Hi, I'm your customer support bot 👋 How may I help you today?", 'bot');
+  // show options after 2 seconds
   setTimeout(() => {
-  options.removeAttribute("hidden")
-  }, 2000);
+  options.removeAttribute("hidden");
+  }, 3000);
 }
 
-// Greet Client after 1 second
-setTimeout(() => {
-  greetClient();
-}, 1000);
 
 // Show options
 
@@ -210,10 +206,7 @@ const endOfConversation = () => {
 
 const handleAction = () => {
   // Handle state transitions based on currentState and lastClickedButton
-  if (lastClickedButton === "actionBtn" && currentState === "greetAndShowOptions") {
-    greetClient();
-    currentState = "showSubOptions";
-  } else if (currentState === "showSubOptions") {
+ if (currentState === "showSubOptions") {
     switch (lastClickedButton) {
       case "order":
         showOptions("order", orderOptions, "I need help with my order", "I understand. How can I help you with your order?");
@@ -309,3 +302,7 @@ const handleAction = () => {
     console.log('Unknown currentState');
   }
 };
+
+setTimeout(() => {
+  greetClient();
+}, 1000);
