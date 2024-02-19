@@ -109,6 +109,7 @@ const handleClick = (buttonName) => {
 actionBtn.addEventListener("click", () => handleClick('actionBtn'));
 order.addEventListener("click", () => handleClick('order'));
 delivery.addEventListener("click", () => handleClick('delivery'));
+returns.addEventListener("click", () => handleClick('returns'));
 payment.addEventListener("click", () => handleClick('payment'));
 other.addEventListener("click", () => handleClick('other'));
 
