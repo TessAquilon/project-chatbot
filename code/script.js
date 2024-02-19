@@ -1,7 +1,9 @@
 // Variables that point to selected DOM elements
 const chat = document.getElementById('chat');
+const form = document.getElementById('form');
 const actionBtn = document.getElementById("action-btn");
 const textInput = document.getElementById("text-input");
+const sendBtn = document.getElementById("send-btn");
 
 const options = document.getElementById("options");
 const order = document.getElementById("order");
@@ -178,14 +180,31 @@ const showSolution = (optionType, optionsElement, messageUser, messageBot, endCo
   if (showTextInput) {
     setTimeout(() => {
       textInput.removeAttribute("hidden");
+      sendBtn.removeAttribute("hidden");
     }, 2000);
   }
 }
 
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const message = textInput.value;
+  showMessage(message, 'user');
+  textInput.value = '';
+  textInput.setAttribute("hidden", true);
+  sendBtn.setAttribute("hidden", true);
+  setTimeout(() => {
+    showMessage("Thank you for your message. We will get back to you as soon as possible.", 'bot');
+  }, 2000);
+  setTimeout(() => {
+    endOfConversation();
+  }, 4000);
+}
+);
+
 // End of Conversation
 const endOfConversation = () => {
   console.log('End of conversation');
-  showMessage("Thank you so much for getting in touch! Please don't hesitate to reach out to us via our phone line that is open 24/7, or via email info@customerchatbot.com if you have any more questions. ", 'bot');
+  showMessage("Thank you so much for getting in touch! Please don't hesitate to reach out to us via via email or via our phone line if you have any more questions. ", 'bot');
 }
 
 const handleAction = () => {
