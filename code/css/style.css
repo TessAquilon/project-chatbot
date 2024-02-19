@@ -249,7 +249,7 @@ footer ul li img {
 
 /* contact section */
 
-#contact {
+#contact .text {
   display: flex;
   flex-flow: column wrap;
   align-items: center;
@@ -257,7 +257,7 @@ footer ul li img {
   gap: 1rem;
 }
 
-#contact a {
+#contact .text a {
   display: flex;
   align-items: center;
   color: var(--blue);
@@ -276,7 +276,7 @@ footer ul li img {
   };
 }
 
-#contact p {
+#contact .text p {
   font-weight: 500;
 }
 
