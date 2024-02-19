@@ -142,6 +142,8 @@ option20.addEventListener("click", () => handleClick('option20'));
 const greetClient = () => {
   // hide button
   actionBtn.setAttribute("hidden", true);
+  // show chat
+  chat.removeAttribute("hidden");
   showMessage("Hi, I'm your customer support bot 👋 How may I help you today?", 'bot');
   // show options after 1 second
   setTimeout(() => {

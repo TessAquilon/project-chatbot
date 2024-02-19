@@ -28,7 +28,6 @@ margin: 0;
 padding: 0;
 border: 0;
 font-family: var(--sans);
-background-color: var(--white);
 font-size: var(--font-size);
 }
 
@@ -91,6 +90,7 @@ main .chat {
   justify-content: flex-start;
   overflow: scroll;
   flex-flow: column nowrap;
+  background: url(/code/assets/bbblurry_background.svg) no-repeat center center fixed;
 }
 
 .input-wrapper form {
