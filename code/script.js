@@ -105,6 +105,34 @@ const handleClick = (buttonName) => {
   }
 }
 
+// Attach event listeners to the buttons
+actionBtn.addEventListener("click", () => handleClick('actionBtn'));
+order.addEventListener("click", () => handleClick('order'));
+delivery.addEventListener("click", () => handleClick('delivery'));
+payment.addEventListener("click", () => handleClick('payment'));
+other.addEventListener("click", () => handleClick('other'));
+
+option1.addEventListener("click", () => handleClick('option1'));
+option2.addEventListener("click", () => handleClick('option2'));
+option3.addEventListener("click", () => handleClick('option3'));
+option4.addEventListener("click", () => handleClick('option4'));
+option5.addEventListener("click", () => handleClick('option5'));
+option6.addEventListener("click", () => handleClick('option6'));
+option7.addEventListener("click", () => handleClick('option7'));
+option8.addEventListener("click", () => handleClick('option8'));
+option9.addEventListener("click", () => handleClick('option9'));
+option10.addEventListener("click", () => handleClick('option10'));
+option11.addEventListener("click", () => handleClick('option11'));
+option12.addEventListener("click", () => handleClick('option12'));
+option13.addEventListener("click", () => handleClick('option13'));
+option14.addEventListener("click", () => handleClick('option14'));
+option15.addEventListener("click", () => handleClick('option15'));
+option16.addEventListener("click", () => handleClick('option16'));
+option17.addEventListener("click", () => handleClick('option17'));
+option18.addEventListener("click", () => handleClick('option18'));
+option19.addEventListener("click", () => handleClick('option19'));
+option20.addEventListener("click", () => handleClick('option20'));
+
 
 
 // Greet Client
