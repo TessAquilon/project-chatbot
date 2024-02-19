@@ -120,6 +120,7 @@ main {
   width: 100%;
   display: flex;
   align-items: center;
+  justify-content: space-evenly;
 }
 
 .chat {
@@ -180,7 +181,7 @@ button {
   border: none;
   border-radius: var(--border-radius);
   padding: 16px 40px;
-  margin-right: 4px;
+  margin: 0.5rem;
   font-size: var(--font-size);
   line-height: 26px;
   font-weight: 500;
@@ -193,11 +194,10 @@ button:hover {
   transition: all 0.2s ease;
 }
 
-#options {
-  display: flex;
-    flex-flow: row wrap;
-    gap: 1rem;
-    justify-content: center;
+/* Ensure that the hidden attribute takes precedence */
+#options[hidden], #order-options[hidden], #payment-options[hidden],
+#delivery-options[hidden], #returns-options[hidden], #other-options[hidden] {
+  display: none !important;;
 }
 
 /* nav section */
@@ -346,4 +346,10 @@ footer ul li img {
     display: flow-root;
     max-width: 900px;
   }
+  #options, #order-options, #payment-options, #delivery-options,
+  #returns-options, #other-options {
+  display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+}
 }

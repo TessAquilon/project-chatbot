@@ -134,15 +134,18 @@ option18.addEventListener("click", () => handleClick('option18'));
 option19.addEventListener("click", () => handleClick('option19'));
 option20.addEventListener("click", () => handleClick('option20'));
 
-
-
 // Greet Client
 const greetClient = () => {
+  setTimeout(() => {
+    // show message after 1 second
     showMessage("Hi, I'm your customer support bot 👋 How may I help you today?", 'bot');
-  // show options after 2 seconds
+  }, 1000);
+  // show options after 3 seconds
   setTimeout(() => {
   options.removeAttribute("hidden");
   }, 3000);
+  // update currentState
+  currentState = "showSubOptions";
 }
 
 
@@ -153,11 +156,14 @@ const showOptions = (optionType, optionsElement, messageUser, messageBot) => {
   options.setAttribute("hidden", true);
   // show chosen option as a message from the user in the chat
   showMessage(messageUser, 'user');
+  // show bot's response after 2 seconds
+  setTimeout(() => {
   showMessage(messageBot, 'bot');
-  // show corresponding options after a certain delay
+  }, 2000);
+  // show corresponding options after 4 seconds
   setTimeout(() => {
     optionsElement.removeAttribute("hidden");
-  }, 2000);
+  }, 3000);
 }
 
 
@@ -168,17 +174,21 @@ const showSolution = (optionType, optionsElement, messageUser, messageBot, endCo
   optionsElement.setAttribute("hidden", true);
   // show chosen option as a message from the user in the chat
   showMessage(messageUser, 'user');
+  // show bot's response after 2 seconds
+  setTimeout(() => {
   showMessage(messageBot, 'bot');
+  }, 2000);
   if (endConversation) {
     setTimeout(() => {
       endOfConversation();
-    }, 2000);
+    }, 4000);
   }
   if (showTextInput) {
     setTimeout(() => {
       textInput.removeAttribute("hidden");
+      textInput.focus();
       sendBtn.removeAttribute("hidden");
-    }, 2000);
+    }, 4000);
   }
 }
 
@@ -194,19 +204,18 @@ form.addEventListener("submit", (e) => {
   }, 2000);
   setTimeout(() => {
     endOfConversation();
-  }, 4000);
+  }, 6000);
 }
 );
 
 // End of Conversation
 const endOfConversation = () => {
-  console.log('End of conversation');
-  showMessage("Thank you so much for getting in touch! Please don't hesitate to reach out to us via via email or via our phone line if you have any more questions. ", 'bot');
+  showMessage("Thank you so much for getting in touch! Please don't hesitate to reach out to us again if you have any more questions.", 'bot');
 }
 
 const handleAction = () => {
   // Handle state transitions based on currentState and lastClickedButton
- if (currentState === "showSubOptions") {
+  if (currentState === "showSubOptions") {
     switch (lastClickedButton) {
       case "order":
         showOptions("order", orderOptions, "I need help with my order", "I understand. How can I help you with your order?");
@@ -303,6 +312,5 @@ const handleAction = () => {
   }
 };
 
-setTimeout(() => {
-  greetClient();
-}, 1000);
+// Initialize the chat
+greetClient();
