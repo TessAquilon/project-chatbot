@@ -31,7 +31,7 @@ border: 0;
 font-family: var(--sans);
 font-size: var(--font-size);
 color: var(--black);;
-background-image: url(assets/bbblurry_background.svg);
+background-image: url(/images/bbblurry_background.svg);
 background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
@@ -350,6 +350,6 @@ footer ul li img {
   #returns-options, #other-options {
   display: flex;
     flex-flow: row wrap;
-    justify-content: center;
+    justify-content: flex-start;
 }
 }
